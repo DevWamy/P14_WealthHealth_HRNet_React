@@ -1,8 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import DatePicker from 'react-date-picker';
+import Select from 'react-select';
 import { useDispatch } from 'react-redux';
 import { employeeActions } from '../store/employeeSlice';
+import '../style/components/form.css';
 
 const EmployeeForm = () => {
     // const navigate = useNavigate();
@@ -60,20 +62,20 @@ const EmployeeForm = () => {
                 </div>
                 <div className="inputWrapper">
                     <label htmlFor="dateOfBirth">Date of Birth</label>
-                    <input
-                        type="text"
+                    <DatePicker
                         id="dateOfBirth"
-                        name="dateOfBirth"
-                        onChange={(e) => setUpdateDateOfBirth(e.target.value)}
+                        selected="dateOfBirth"
+                        onChange={(date) => setUpdateDateOfBirth(date.target.value)}
+                        wrapperClassName="datePicker"
+                        required
                     />
                 </div>
                 <div className="inputWrapper">
                     <label htmlFor="startDate">Start Date</label>
-                    <input
-                        type="text"
+                    <DatePicker
                         id="startDate"
                         name="startDate"
-                        onChange={(e) => setUpdateStartDate(e.target.value)}
+                        onChange={(date) => setUpdateStartDate(date.target.value)}
                     />
                 </div>
                 <fieldset className="address">
