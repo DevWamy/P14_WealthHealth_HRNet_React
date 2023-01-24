@@ -124,7 +124,7 @@ select {
     margin-bottom: 4px;
 }
 
-.margin {
+.adress {
     margin: 4px 0px;
 }
 
@@ -132,82 +132,7 @@ fieldset {
     border-radius: 5px;
 }
 
-.modal,
-.overlay {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: fixed;
-}
-
-.modal-hidden {
-    display: none;
-}
-
-.overlay {
-    background: rgba(49, 49, 49, 0.8);
-    visibility: hidden;
-    transition: all 0.4s;
-    opacity: 0;
-}
-
-.overlay-active {
-    visibility: visible;
-    opacity: 1;
-}
-
-.modal-content {
-    background: whitesmoke;
-    position: absolute;
-    border-radius: 5px;
-    transform: translate(-50%, -50%) scale(0);
-    top: 0;
-    left: 50%;
-    text-align: center;
-    padding: 0 30px 30px;
-    color: rgb(46, 105, 18);
-    min-width: 30px;
-    visibility: hidden;
-    transition: all 0.4s;
-}
-
-.modal-active {
-    visibility: visible;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.modal-content img {
-    width: 120px;
-    margin-top: -55px;
-}
-
-.modal-content p {
-    margin: 25px 0 15px 0;
-}
-
-.modal-content button {
-    width: 40%;
-    margin: 20px 0 10px 0;
-    padding: 10px 0;
-    background: #1e7528;
-    color: white;
-    border: 0;
-    outline: none;
-    font-size: 18px;
-    border-radius: 4px;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-
-.modal-content button:hover {
-    background: #188a25;
-}
-
-form .button {
+form .save {
     color: #fff;
     height: 33px;
     margin: 20px 0 15px 0;
@@ -217,9 +142,9 @@ form .button {
     font-size: 18px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: linear-gradient(135deg, #55d883, #d7de52);
+    background: linear-gradient(135deg, #67f3bb, #d991ba);
 }
 
-form .button:hover {
-    background: linear-gradient(135deg, #4c9767, #babf50);
+form .save:hover {
+    background: linear-gradient(135deg, #50bd92, #bf77a0);
 }
