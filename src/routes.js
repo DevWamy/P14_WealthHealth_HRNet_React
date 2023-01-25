@@ -3,3 +3,4 @@
  */
 
 export const home = '/';
+export const employee = '/List';

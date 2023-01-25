@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
+import List from './pages/List';
 import { Provider } from 'react-redux';
 import store from './store';
 import './index.css';
-
 import reportWebVitals from './reportWebVitals';
-import { home } from '../src/routes';
+import { employee, home } from '../src/routes';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,6 +16,7 @@ root.render(
             <BrowserRouter>
                 <Routes>
                     <Route exact path={home} element={<Home />} />
+                    <Route exact path={employee} element={<List />} />
                 </Routes>
                 {/* <Footer /> */}
             </BrowserRouter>

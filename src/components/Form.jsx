@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import DatePicker from 'react-date-picker';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-// import Select from 'react-select';
-import Select, { Option } from 'rc-select';
 import { useDispatch } from 'react-redux';
 import { employeeActions } from '../store/employeeSlice';
 import logo from '../assets/WealthHealth.png';
@@ -18,8 +16,8 @@ const EmployeeForm = () => {
     //Form values
     const [updateFirstName, setUpdateFirstName] = useState('');
     const [updateLastName, setUpdateLastName] = useState('');
-    const [updateDateOfBirth, setUpdateDateOfBirth] = useState(new Date());
-    const [updateStartDate, setUpdateStartDate] = useState(new Date());
+    const [updateDateOfBirth, setUpdateDateOfBirth] = useState('');
+    const [updateStartDate, setUpdateStartDate] = useState('');
     const [updateStreet, setUpdateStreet] = useState('');
     const [updateCity, setUpdateCity] = useState('');
     const [updateState, setUpdateState] = useState('');
@@ -90,6 +88,10 @@ const EmployeeForm = () => {
     ];
     const defaultOption = StateOptions[0];
 
+    //Department values
+    const DepartmentOptions = ['Sales', 'Marketing', 'Engineering', 'Human Resources', 'Legal'];
+    const defaultDepOption = DepartmentOptions[0];
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -97,8 +99,8 @@ const EmployeeForm = () => {
             employeeActions.addEmployee({
                 firstName: updateFirstName,
                 lastName: updateLastName,
-                dateOfBirth: updateDateOfBirth,
-                startDate: updateStartDate,
+                dateOfBirth: updateDateOfBirth.toString(),
+                startDate: updateStartDate.toString(),
                 street: updateStreet,
                 city: updateCity,
                 state: updateState,
@@ -114,7 +116,7 @@ const EmployeeForm = () => {
                 <div className="formContainer flexContainer">
                     <img className="logo_image" src={logo} alt="Wealth Health Logo" />
                     <h1>HRnet</h1>
-                    <Link className="link" to="/" text="Employee List">
+                    <Link className="link" to="/List" text="Employee List">
                         View Current Employees
                     </Link>
                     <h2 className="title">Create Employees</h2>
@@ -190,7 +192,7 @@ const EmployeeForm = () => {
                                     <label htmlFor="state">State</label>
                                     <Dropdown
                                         options={StateOptions}
-                                        onChange={(e) => setUpdateState(e.target.value)}
+                                        onChange={(e) => setUpdateState(e.value)}
                                         value={defaultOption}
                                         placeholder="Select an option"
                                     />
@@ -209,14 +211,12 @@ const EmployeeForm = () => {
                         </fieldset>
                         <div className="input address">
                             <label htmlFor="department">Department</label>
-                            <select name="department" id="department" required>
-                                <option value="">-- Select a department --</option>
-                                <option>Sales</option>
-                                <option>Marketing</option>
-                                <option>Engineering</option>
-                                <option>Human Resources</option>
-                                <option>Legal</option>
-                            </select>
+                            <Dropdown
+                                options={DepartmentOptions}
+                                onChange={(e) => setUpdateDepartment(e.value)}
+                                value={defaultDepOption}
+                                placeholder="Select an option"
+                            />
                         </div>
                         <button className="save" type="submit">
                             Save
