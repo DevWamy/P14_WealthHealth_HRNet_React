@@ -94,6 +94,7 @@ label {
 }
 
 .datePicker {
+    position: absolute;
     width: 120px;
 }
 
@@ -120,11 +121,11 @@ select {
     border-color: #03a72f;
 }
 
-.margin-bottom {
+.ussr-data {
     margin-bottom: 4px;
 }
 
-.adress {
+.address {
     margin: 4px 0px;
 }
 

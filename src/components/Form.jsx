@@ -121,7 +121,7 @@ const EmployeeForm = () => {
                     </Link>
                     <h2 className="title">Create Employees</h2>
                     <form className="flexContainer" onSubmit={handleSubmit}>
-                        <div className="input margin-bottom">
+                        <div className="input user-data">
                             <label htmlFor="firstName">First Name</label>
                             <input
                                 type="text"
@@ -131,7 +131,7 @@ const EmployeeForm = () => {
                                 required
                             />
                         </div>
-                        <div className="input margin-bottom">
+                        <div className="input user-data">
                             <label htmlFor="lastName">Last Name</label>
                             <input
                                 type="text"
@@ -141,7 +141,7 @@ const EmployeeForm = () => {
                                 required
                             />
                         </div>
-                        <div className="input margin-bottom">
+                        <div className="input user-data">
                             <label htmlFor="dateOfBirth">Date of Birth</label>
                             <div>
                                 <DatePicker
@@ -153,7 +153,7 @@ const EmployeeForm = () => {
                                 />
                             </div>
                         </div>
-                        <div className="input margin-bottom">
+                        <div className="input user-data">
                             <label htmlFor="startDate">Start Date</label>
                             <div>
                                 <DatePicker
