@@ -9,6 +9,12 @@
     font-size: 15px;
     color: black;
     background: linear-gradient(135deg, #71e69a, #ffd6e0);
+    width: 100%;
+}
+
+.table {
+    width: 90%;
+    margin: 0 auto;
 }
 
 .employee-header {

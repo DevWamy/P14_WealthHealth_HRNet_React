@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import MaterialReactTable from 'material-react-table';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import '../style/components/List.css';
+import '../style/components/list.css';
 
 const List = () => {
     const employeeList = useSelector((state) => state.employees);
@@ -63,8 +63,7 @@ const List = () => {
     return (
         <div className="container" role="main">
             <h1 className="employee-header">Current Employees</h1>
-
-            <div>
+            <div className="table">
                 <MaterialReactTable
                     columns={columns}
                     data={employeeList}

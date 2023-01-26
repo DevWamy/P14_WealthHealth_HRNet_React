@@ -1,7 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import DatePicker from 'react-date-picker';
+// import DatePicker from 'react-date-picker';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { useDispatch } from 'react-redux';
@@ -99,8 +101,8 @@ const EmployeeForm = () => {
             employeeActions.addEmployee({
                 firstName: updateFirstName,
                 lastName: updateLastName,
-                dateOfBirth: updateDateOfBirth.toString(),
-                startDate: updateStartDate.toString(),
+                dateOfBirth: updateDateOfBirth.toLocaleDateString(),
+                startDate: updateStartDate.toLocaleDateString(),
                 street: updateStreet,
                 city: updateCity,
                 state: updateState,
@@ -144,11 +146,18 @@ const EmployeeForm = () => {
                         <div className="input user-data">
                             <label htmlFor="dateOfBirth">Date of Birth</label>
                             <div>
-                                <DatePicker
+                                {/* <DatePicker
                                     id="dateOfBirth"
                                     name="dateOfBirth"
                                     onChange={setUpdateDateOfBirth}
                                     value={updateDateOfBirth}
+                                    required
+                                /> */}
+                                <DatePicker
+                                    dateFormat="dd/MM/yyyy"
+                                    selected={updateDateOfBirth}
+                                    onChange={setUpdateDateOfBirth}
+                                    placeholderText=" "
                                     required
                                 />
                             </div>
@@ -156,11 +165,18 @@ const EmployeeForm = () => {
                         <div className="input user-data">
                             <label htmlFor="startDate">Start Date</label>
                             <div>
-                                <DatePicker
+                                {/* <DatePicker
                                     id="startDate"
                                     name="startDate"
                                     onChange={setUpdateStartDate}
                                     value={updateStartDate}
+                                    required
+                                /> */}
+                                <DatePicker
+                                    dateFormat="dd/MM/yyyy"
+                                    selected={updateStartDate}
+                                    onChange={setUpdateStartDate}
+                                    placeholderText=" "
                                     required
                                 />
                             </div>
