@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Dropdown from 'react-dropdown';
+import Modal from './Modal';
 import 'react-dropdown/style.css';
+import { stateOptions } from './states';
 import { useDispatch } from 'react-redux';
 import { employeeActions } from '../store/employeeSlice';
 import logo from '../assets/WealthHealth.png';
@@ -14,6 +16,9 @@ import '../style/components/form.css';
 const EmployeeForm = () => {
     // const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    //For modal
+    const [show, setShow] = useState(false);
 
     //Form values
     const [updateFirstName, setUpdateFirstName] = useState('');
@@ -26,69 +31,8 @@ const EmployeeForm = () => {
     const [updateZipCode, setUpdateZipCode] = useState('');
     const [updateDepartment, setUpdateDepartment] = useState('');
 
-    //States values
-    const StateOptions = [
-        'Alabama',
-        'Alaska',
-        'American Samoa',
-        'Arizona',
-        'Arkansas',
-        'California',
-        'Colorado',
-        'Connecticut',
-        'Delaware',
-        'District Of Columbia',
-        'Federated States Of Micronesia',
-        'Florida',
-        'Georgia',
-        'Guam',
-        'Hawaii',
-        'Idaho',
-        'Illinois',
-        'Indiana',
-        'Iowa',
-        'Kansas',
-        'Kentucky',
-        'Louisiana',
-        'Maine',
-        'Marshall Islands',
-        'Maryland',
-        'Massachusetts',
-        'Michigan',
-        'Minnesota',
-        'Mississippi',
-        'Missouri',
-        'Montana',
-        'Nebraska',
-        'Nevada',
-        'New Hampshire',
-        'New Jersey',
-        'New Mexico',
-        'New York',
-        'North Carolina',
-        'North Dakota',
-        'Northern Mariana Islands',
-        'Ohio',
-        'Oklahoma',
-        'Oregon',
-        'Palau',
-        'Pennsylvania',
-        'Puerto Rico',
-        'Rhode Island',
-        'South Carolina',
-        'South Dakota',
-        'Tennessee',
-        'Texas',
-        'Utah',
-        'Vermont',
-        'Virgin Islands',
-        'Virginia',
-        'Washington',
-        'West Virginia',
-        'Wisconsin',
-        'Wyoming',
-    ];
-    const defaultOption = StateOptions[0];
+    //For States values
+    const defaultOption = stateOptions[0];
 
     //Department values
     const DepartmentOptions = ['Sales', 'Marketing', 'Engineering', 'Human Resources', 'Legal'];
@@ -207,7 +151,7 @@ const EmployeeForm = () => {
                                 <div className="input address">
                                     <label htmlFor="state">State</label>
                                     <Dropdown
-                                        options={StateOptions}
+                                        options={stateOptions}
                                         onChange={(e) => setUpdateState(e.value)}
                                         value={defaultOption}
                                         placeholder="Select an option"
@@ -240,6 +184,11 @@ const EmployeeForm = () => {
                     </form>
                 </div>
             </div>
+            {/* composant/plugin modal */}
+            <button onClick={() => setShow(true)}>Show Modal</button>
+            <Modal title="My Modal" onClose={() => setShow(false)} show={show}>
+                <p>Employee created !</p>
+            </Modal>
         </>
     );
 };
