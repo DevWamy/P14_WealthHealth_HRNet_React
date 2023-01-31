@@ -4,33 +4,38 @@
     top: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.75);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.faRegCheckCircle {
-    font-size: 30px;
-    color: purple;
-}
-
-.faRegTimesCircle {
-    font-size: 30px;
-    color: purple;
-}
-
 .modal-content {
     width: 500px;
+    height: 50px;
     background-color: #fff;
+    border-radius: 8px;
 }
 
 .modal-close {
-    padding: 10px;
+    position: absolute;
+    bottom: 40px;
+    left: 480px;
+    display: block;
+    font-size: 18px;
+    width: 30px;
+    height: 30px;
+    background-color: #317933;
+    border-radius: 100px;
+}
+
+.close {
+    color: white;
+    margin-left: 6px;
+    margin-top: 6px;
 }
 
 .modal-body {
+    position: relative;
     padding: 10px;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
 }

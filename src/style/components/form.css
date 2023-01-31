@@ -149,3 +149,8 @@ form .save {
 form .save:hover {
     background: linear-gradient(135deg, #50bd92, #bf77a0);
 }
+
+.text {
+    margin-top: 2px;
+    margin-left: 15px;
+}

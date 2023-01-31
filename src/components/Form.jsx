@@ -14,7 +14,6 @@ import logo from '../assets/WealthHealth.png';
 import '../style/components/form.css';
 
 const EmployeeForm = () => {
-    // const navigate = useNavigate();
     const dispatch = useDispatch();
 
     //For modal
@@ -54,6 +53,7 @@ const EmployeeForm = () => {
                 department: updateDepartment,
             }),
         );
+        setShow(true);
     };
 
     return (
@@ -185,9 +185,8 @@ const EmployeeForm = () => {
                 </div>
             </div>
             {/* composant/plugin modal */}
-            <button onClick={() => setShow(true)}>Show Modal</button>
             <Modal title="My Modal" onClose={() => setShow(false)} show={show}>
-                <p>Employee created !</p>
+                <p className="text">Employee created !</p>
             </Modal>
         </>
     );
