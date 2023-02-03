@@ -93,15 +93,6 @@ label {
     transition: all 0.3s ease;
 }
 
-.datePicker {
-    position: absolute;
-    width: 120px;
-}
-
-.datePicker input {
-    padding-left: 7px;
-}
-
 input {
     width: 96%;
     height: 25px;

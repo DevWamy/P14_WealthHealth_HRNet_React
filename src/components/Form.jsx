@@ -1,16 +1,27 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import Dropdown from 'react-dropdown';
-import Modal from './Modal';
-import 'react-dropdown/style.css';
-import { stateOptions } from './states';
 import { useDispatch } from 'react-redux';
 import { employeeActions } from '../store/employeeSlice';
 import logo from '../assets/WealthHealth.png';
 import '../style/components/form.css';
+
+//For Date picker
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import getYear from 'date-fns/getYear';
+import getMonth from 'date-fns/getMonth';
+import range from 'lodash.range';
+
+//For dropdown
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
+
+//For modal
+import Modal from './Modal';
+
+//For state
+import { stateOptions } from './states';
 
 const EmployeeForm = () => {
     const dispatch = useDispatch();
@@ -26,14 +37,34 @@ const EmployeeForm = () => {
     const defaultDepOption = DepartmentOptions[0];
 
     //Form values
+    //For inputs
     const [updateFirstName, setUpdateFirstName] = useState('');
     const [updateLastName, setUpdateLastName] = useState('');
-    const [updateDateOfBirth, setUpdateDateOfBirth] = useState('');
-    const [updateStartDate, setUpdateStartDate] = useState('');
     const [updateStreet, setUpdateStreet] = useState('');
     const [updateCity, setUpdateCity] = useState('');
-    const [updateState, setUpdateState] = useState(defaultOption.value);
     const [updateZipCode, setUpdateZipCode] = useState('');
+
+    //For date picker
+    const [updateDateOfBirth, setUpdateDateOfBirth] = useState('');
+    const [updateStartDate, setUpdateStartDate] = useState('');
+    const years = range(1960, getYear(new Date()) + 10, 1);
+    const months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+    ];
+
+    //For dropdown
+    const [updateState, setUpdateState] = useState(defaultOption.value);
     const [updateDepartment, setUpdateDepartment] = useState(defaultDepOption);
 
     const handleSubmit = (e) => {
@@ -90,10 +121,62 @@ const EmployeeForm = () => {
                             <label htmlFor="dateOfBirth">Date of Birth</label>
                             <div>
                                 <DatePicker
-                                    dateFormat="dd/MM/yyyy"
+                                    renderCustomHeader={({
+                                        date,
+                                        changeYear,
+                                        changeMonth,
+                                        decreaseMonth,
+                                        increaseMonth,
+                                        prevMonthButtonDisabled,
+                                        nextMonthButtonDisabled,
+                                    }) => (
+                                        <div
+                                            style={{
+                                                margin: 1,
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                            }}
+                                        >
+                                            <button
+                                                onClick={decreaseMonth}
+                                                disabled={prevMonthButtonDisabled}
+                                            >
+                                                {'<'}
+                                            </button>
+                                            <select
+                                                value={getYear(date)}
+                                                onChange={({ target: { value } }) => changeYear(value)}
+                                            >
+                                                {years.map((option) => (
+                                                    <option key={option} value={option}>
+                                                        {option}
+                                                    </option>
+                                                ))}
+                                            </select>
+
+                                            <select
+                                                value={months[getMonth(date)]}
+                                                onChange={({ target: { value } }) =>
+                                                    changeMonth(months.indexOf(value))
+                                                }
+                                            >
+                                                {months.map((option) => (
+                                                    <option key={option} value={option}>
+                                                        {option}
+                                                    </option>
+                                                ))}
+                                            </select>
+
+                                            <button
+                                                onClick={increaseMonth}
+                                                disabled={nextMonthButtonDisabled}
+                                            >
+                                                {'>'}
+                                            </button>
+                                        </div>
+                                    )}
                                     selected={updateDateOfBirth}
                                     onChange={setUpdateDateOfBirth}
-                                    placeholderText=" "
                                     required
                                 />
                             </div>
@@ -102,10 +185,62 @@ const EmployeeForm = () => {
                             <label htmlFor="startDate">Start Date</label>
                             <div>
                                 <DatePicker
-                                    dateFormat="dd/MM/yyyy"
+                                    renderCustomHeader={({
+                                        date,
+                                        changeYear,
+                                        changeMonth,
+                                        decreaseMonth,
+                                        increaseMonth,
+                                        prevMonthButtonDisabled,
+                                        nextMonthButtonDisabled,
+                                    }) => (
+                                        <div
+                                            style={{
+                                                margin: 1,
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                            }}
+                                        >
+                                            <button
+                                                onClick={decreaseMonth}
+                                                disabled={prevMonthButtonDisabled}
+                                            >
+                                                {'<'}
+                                            </button>
+                                            <select
+                                                value={getYear(date)}
+                                                onChange={({ target: { value } }) => changeYear(value)}
+                                            >
+                                                {years.map((option) => (
+                                                    <option key={option} value={option}>
+                                                        {option}
+                                                    </option>
+                                                ))}
+                                            </select>
+
+                                            <select
+                                                value={months[getMonth(date)]}
+                                                onChange={({ target: { value } }) =>
+                                                    changeMonth(months.indexOf(value))
+                                                }
+                                            >
+                                                {months.map((option) => (
+                                                    <option key={option} value={option}>
+                                                        {option}
+                                                    </option>
+                                                ))}
+                                            </select>
+
+                                            <button
+                                                onClick={increaseMonth}
+                                                disabled={nextMonthButtonDisabled}
+                                            >
+                                                {'>'}
+                                            </button>
+                                        </div>
+                                    )}
                                     selected={updateStartDate}
                                     onChange={setUpdateStartDate}
-                                    placeholderText=" "
                                     required
                                 />
                             </div>
