@@ -1,5 +1,7 @@
 import React from 'react';
+import Header from '../components/Header';
 import Form from '../components/Form';
+import '../style/pages/home.css';
 
 /**
  * Display the create new employee page .
@@ -10,6 +12,7 @@ import Form from '../components/Form';
 const Home = () => {
     return (
         <div className="main">
+            <Header />
             <Form />
         </div>
     );

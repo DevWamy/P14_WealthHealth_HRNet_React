@@ -1,0 +1,11 @@
+.main {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    background: linear-gradient(135deg, #71e69a, #ffd6e0);
+    flex-direction: column;
+}

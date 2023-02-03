@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { employeeActions } from '../store/employeeSlice';
-import logo from '../assets/WealthHealth.png';
+// import logo from '../assets/WealthHealth.png';
 import '../style/components/form.css';
 
 //For Date picker
@@ -88,224 +88,205 @@ const EmployeeForm = () => {
 
     return (
         <>
-            <div className="container">
-                <div className="formContainer flexContainer">
-                    <img className="logo_image" src={logo} alt="Wealth Health Logo" />
-                    <h1>HRnet</h1>
-                    <Link to="/List" className="link" text="Employee List">
-                        View Current Employees
-                    </Link>
-                    <h2 className="title">Create Employees</h2>
-                    <form className="flexContainer" onSubmit={handleSubmit}>
-                        <div className="input user-data">
-                            <label htmlFor="firstName">First Name</label>
-                            <input
-                                type="text"
-                                id="firstName"
-                                name="firstName"
-                                onChange={(e) => setUpdateFirstName(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="input user-data">
-                            <label htmlFor="lastName">Last Name</label>
-                            <input
-                                type="text"
-                                id="lastName"
-                                name="lastName"
-                                onChange={(e) => setUpdateLastName(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="input user-data">
-                            <label htmlFor="dateOfBirth">Date of Birth</label>
-                            <div>
-                                <DatePicker
-                                    renderCustomHeader={({
-                                        date,
-                                        changeYear,
-                                        changeMonth,
-                                        decreaseMonth,
-                                        increaseMonth,
-                                        prevMonthButtonDisabled,
-                                        nextMonthButtonDisabled,
-                                    }) => (
-                                        <div
-                                            style={{
-                                                margin: 1,
-                                                display: 'flex',
-                                                justifyContent: 'center',
-                                            }}
+            <div className="formContainer">
+                <form className="flexContainer" onSubmit={handleSubmit}>
+                    <div className="input user-data">
+                        <label htmlFor="firstName">First Name</label>
+                        <input
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            onChange={(e) => setUpdateFirstName(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="input user-data">
+                        <label htmlFor="lastName">Last Name</label>
+                        <input
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            onChange={(e) => setUpdateLastName(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="input user-data">
+                        <label htmlFor="dateOfBirth">Date of Birth</label>
+                        <div>
+                            <DatePicker
+                                renderCustomHeader={({
+                                    date,
+                                    changeYear,
+                                    changeMonth,
+                                    decreaseMonth,
+                                    increaseMonth,
+                                    prevMonthButtonDisabled,
+                                    nextMonthButtonDisabled,
+                                }) => (
+                                    <div
+                                        style={{
+                                            margin: 1,
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
+                                        <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
+                                            {'<'}
+                                        </button>
+                                        <select
+                                            value={getYear(date)}
+                                            onChange={({ target: { value } }) => changeYear(value)}
                                         >
-                                            <button
-                                                onClick={decreaseMonth}
-                                                disabled={prevMonthButtonDisabled}
-                                            >
-                                                {'<'}
-                                            </button>
-                                            <select
-                                                value={getYear(date)}
-                                                onChange={({ target: { value } }) => changeYear(value)}
-                                            >
-                                                {years.map((option) => (
-                                                    <option key={option} value={option}>
-                                                        {option}
-                                                    </option>
-                                                ))}
-                                            </select>
+                                            {years.map((option) => (
+                                                <option key={option} value={option}>
+                                                    {option}
+                                                </option>
+                                            ))}
+                                        </select>
 
-                                            <select
-                                                value={months[getMonth(date)]}
-                                                onChange={({ target: { value } }) =>
-                                                    changeMonth(months.indexOf(value))
-                                                }
-                                            >
-                                                {months.map((option) => (
-                                                    <option key={option} value={option}>
-                                                        {option}
-                                                    </option>
-                                                ))}
-                                            </select>
+                                        <select
+                                            value={months[getMonth(date)]}
+                                            onChange={({ target: { value } }) =>
+                                                changeMonth(months.indexOf(value))
+                                            }
+                                        >
+                                            {months.map((option) => (
+                                                <option key={option} value={option}>
+                                                    {option}
+                                                </option>
+                                            ))}
+                                        </select>
 
-                                            <button
-                                                onClick={increaseMonth}
-                                                disabled={nextMonthButtonDisabled}
-                                            >
-                                                {'>'}
-                                            </button>
-                                        </div>
-                                    )}
-                                    selected={updateDateOfBirth}
-                                    onChange={setUpdateDateOfBirth}
+                                        <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
+                                            {'>'}
+                                        </button>
+                                    </div>
+                                )}
+                                selected={updateDateOfBirth}
+                                onChange={setUpdateDateOfBirth}
+                                required
+                            />
+                        </div>
+                    </div>
+                    <div className="input user-data">
+                        <label htmlFor="startDate">Start Date</label>
+                        <div>
+                            <DatePicker
+                                renderCustomHeader={({
+                                    date,
+                                    changeYear,
+                                    changeMonth,
+                                    decreaseMonth,
+                                    increaseMonth,
+                                    prevMonthButtonDisabled,
+                                    nextMonthButtonDisabled,
+                                }) => (
+                                    <div
+                                        style={{
+                                            margin: 1,
+                                            display: 'flex',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
+                                        <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>
+                                            {'<'}
+                                        </button>
+                                        <select
+                                            value={getYear(date)}
+                                            onChange={({ target: { value } }) => changeYear(value)}
+                                        >
+                                            {years.map((option) => (
+                                                <option key={option} value={option}>
+                                                    {option}
+                                                </option>
+                                            ))}
+                                        </select>
+
+                                        <select
+                                            value={months[getMonth(date)]}
+                                            onChange={({ target: { value } }) =>
+                                                changeMonth(months.indexOf(value))
+                                            }
+                                        >
+                                            {months.map((option) => (
+                                                <option key={option} value={option}>
+                                                    {option}
+                                                </option>
+                                            ))}
+                                        </select>
+
+                                        <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>
+                                            {'>'}
+                                        </button>
+                                    </div>
+                                )}
+                                selected={updateStartDate}
+                                onChange={setUpdateStartDate}
+                                required
+                            />
+                        </div>
+                    </div>
+                    <fieldset className="address">
+                        <legend>Address</legend>
+                        <div className="flexContainer">
+                            <div className="input address">
+                                <label htmlFor="street">Street</label>
+                                <input
+                                    type="text"
+                                    id="street"
+                                    name="street"
+                                    onChange={(e) => setUpdateStreet(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className="input address">
+                                <label htmlFor="city">City</label>
+                                <input
+                                    type="text"
+                                    id="city"
+                                    name="city"
+                                    onChange={(e) => setUpdateCity(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className="input address">
+                                <label htmlFor="state">State</label>
+                                <Dropdown
+                                    options={stateOptions}
+                                    onChange={(e) => setUpdateState(e.value)}
+                                    value={defaultOption}
+                                    placeholder="Select an option"
+                                    required
+                                />
+                            </div>
+                            <div className="input address">
+                                <label htmlFor="zipCode">Zip Code</label>
+                                <input
+                                    type="number"
+                                    id="zipCode"
+                                    name="zipCode"
+                                    onChange={(e) => setUpdateZipCode(e.target.value)}
                                     required
                                 />
                             </div>
                         </div>
-                        <div className="input user-data">
-                            <label htmlFor="startDate">Start Date</label>
-                            <div>
-                                <DatePicker
-                                    renderCustomHeader={({
-                                        date,
-                                        changeYear,
-                                        changeMonth,
-                                        decreaseMonth,
-                                        increaseMonth,
-                                        prevMonthButtonDisabled,
-                                        nextMonthButtonDisabled,
-                                    }) => (
-                                        <div
-                                            style={{
-                                                margin: 1,
-                                                display: 'flex',
-                                                justifyContent: 'center',
-                                            }}
-                                        >
-                                            <button
-                                                onClick={decreaseMonth}
-                                                disabled={prevMonthButtonDisabled}
-                                            >
-                                                {'<'}
-                                            </button>
-                                            <select
-                                                value={getYear(date)}
-                                                onChange={({ target: { value } }) => changeYear(value)}
-                                            >
-                                                {years.map((option) => (
-                                                    <option key={option} value={option}>
-                                                        {option}
-                                                    </option>
-                                                ))}
-                                            </select>
-
-                                            <select
-                                                value={months[getMonth(date)]}
-                                                onChange={({ target: { value } }) =>
-                                                    changeMonth(months.indexOf(value))
-                                                }
-                                            >
-                                                {months.map((option) => (
-                                                    <option key={option} value={option}>
-                                                        {option}
-                                                    </option>
-                                                ))}
-                                            </select>
-
-                                            <button
-                                                onClick={increaseMonth}
-                                                disabled={nextMonthButtonDisabled}
-                                            >
-                                                {'>'}
-                                            </button>
-                                        </div>
-                                    )}
-                                    selected={updateStartDate}
-                                    onChange={setUpdateStartDate}
-                                    required
-                                />
-                            </div>
-                        </div>
-                        <fieldset className="address">
-                            <legend>Address</legend>
-                            <div className="flexContainer">
-                                <div className="input address">
-                                    <label htmlFor="street">Street</label>
-                                    <input
-                                        type="text"
-                                        id="street"
-                                        name="street"
-                                        onChange={(e) => setUpdateStreet(e.target.value)}
-                                        required
-                                    />
-                                </div>
-                                <div className="input address">
-                                    <label htmlFor="city">City</label>
-                                    <input
-                                        type="text"
-                                        id="city"
-                                        name="city"
-                                        onChange={(e) => setUpdateCity(e.target.value)}
-                                        required
-                                    />
-                                </div>
-                                <div className="input address">
-                                    <label htmlFor="state">State</label>
-                                    <Dropdown
-                                        options={stateOptions}
-                                        onChange={(e) => setUpdateState(e.value)}
-                                        value={defaultOption}
-                                        placeholder="Select an option"
-                                        required
-                                    />
-                                </div>
-                                <div className="input address">
-                                    <label htmlFor="zipCode">Zip Code</label>
-                                    <input
-                                        type="number"
-                                        id="zipCode"
-                                        name="zipCode"
-                                        onChange={(e) => setUpdateZipCode(e.target.value)}
-                                        required
-                                    />
-                                </div>
-                            </div>
-                        </fieldset>
-                        <div className="input address">
-                            <label htmlFor="department">Department</label>
-                            <Dropdown
-                                options={DepartmentOptions}
-                                onChange={(e) => setUpdateDepartment(e.value)}
-                                value={defaultDepOption}
-                                placeholder="Select an option"
-                                required
-                            />
-                        </div>
-                        <button className="save" type="submit">
-                            Save
-                        </button>
-                    </form>
-                </div>
+                    </fieldset>
+                    <div className="input address">
+                        <label htmlFor="department">Department</label>
+                        <Dropdown
+                            options={DepartmentOptions}
+                            onChange={(e) => setUpdateDepartment(e.value)}
+                            value={defaultDepOption}
+                            placeholder="Select an option"
+                            required
+                        />
+                    </div>
+                    <button className="save" type="submit">
+                        Save
+                    </button>
+                </form>
             </div>
+            {/* </div> */}
             {/* composant/plugin modal */}
             <Modal title="My Modal" onClose={() => setShow(false)} show={show}>
                 <p className="text">Employee created !</p>
