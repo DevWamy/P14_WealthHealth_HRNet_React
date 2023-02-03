@@ -73,22 +73,6 @@ const List = () => {
                     }}
                 />
             </div>
-
-            {/* <div>
-                {employeeList.map((employee) => (
-                    <div key={employee}>
-                        <p>{employee.firstName}</p>
-                        <p>{employee.lastName}</p>
-                        <p>{employee.startDate}</p>
-                        <p>{employee.department}</p>
-                        <p>{employee.dateOfBirth}</p>
-                        <p>{employee.street}</p>
-                        <p>{employee.city}</p>
-                        <p>{employee.state}</p>
-                        <p>{employee.zipCode}</p>
-                    </div>
-                ))}
-            </div> */}
             {/* Link to go back to the form page */}
             <Link className="home-link" to="/">
                 Home

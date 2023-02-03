@@ -1,6 +1,6 @@
-import '../style/components/modal.css';
 import React from 'react';
 import { FaTimes } from 'react-icons/fa';
+import '../style/components/modal.css';
 
 const Modal = (props) => {
     if (!props.show) {
@@ -8,7 +8,7 @@ const Modal = (props) => {
     }
 
     return (
-        <div className="modal" onClick={props.onClose}>
+        <div className={`modal ${props.className}`} onClick={props.onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                 <div className="modal-body">
                     {props.children}

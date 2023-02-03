@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import DatePicker from 'react-date-picker';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Dropdown from 'react-dropdown';
@@ -19,6 +18,13 @@ const EmployeeForm = () => {
     //For modal
     const [show, setShow] = useState(false);
 
+    //For States values
+    const defaultOption = stateOptions[0];
+
+    //Department values
+    const DepartmentOptions = ['Sales', 'Marketing', 'Engineering', 'Human Resources', 'Legal'];
+    const defaultDepOption = DepartmentOptions[0];
+
     //Form values
     const [updateFirstName, setUpdateFirstName] = useState('');
     const [updateLastName, setUpdateLastName] = useState('');
@@ -26,16 +32,9 @@ const EmployeeForm = () => {
     const [updateStartDate, setUpdateStartDate] = useState('');
     const [updateStreet, setUpdateStreet] = useState('');
     const [updateCity, setUpdateCity] = useState('');
-    const [updateState, setUpdateState] = useState('');
+    const [updateState, setUpdateState] = useState(defaultOption.value);
     const [updateZipCode, setUpdateZipCode] = useState('');
-    const [updateDepartment, setUpdateDepartment] = useState('');
-
-    //For States values
-    const defaultOption = stateOptions[0];
-
-    //Department values
-    const DepartmentOptions = ['Sales', 'Marketing', 'Engineering', 'Human Resources', 'Legal'];
-    const defaultDepOption = DepartmentOptions[0];
+    const [updateDepartment, setUpdateDepartment] = useState(defaultDepOption);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -62,7 +61,7 @@ const EmployeeForm = () => {
                 <div className="formContainer flexContainer">
                     <img className="logo_image" src={logo} alt="Wealth Health Logo" />
                     <h1>HRnet</h1>
-                    <Link className="link" to="/List" text="Employee List">
+                    <Link to="/List" className="link" text="Employee List">
                         View Current Employees
                     </Link>
                     <h2 className="title">Create Employees</h2>
@@ -90,13 +89,6 @@ const EmployeeForm = () => {
                         <div className="input user-data">
                             <label htmlFor="dateOfBirth">Date of Birth</label>
                             <div>
-                                {/* <DatePicker
-                                    id="dateOfBirth"
-                                    name="dateOfBirth"
-                                    onChange={setUpdateDateOfBirth}
-                                    value={updateDateOfBirth}
-                                    required
-                                /> */}
                                 <DatePicker
                                     dateFormat="dd/MM/yyyy"
                                     selected={updateDateOfBirth}
@@ -109,13 +101,6 @@ const EmployeeForm = () => {
                         <div className="input user-data">
                             <label htmlFor="startDate">Start Date</label>
                             <div>
-                                {/* <DatePicker
-                                    id="startDate"
-                                    name="startDate"
-                                    onChange={setUpdateStartDate}
-                                    value={updateStartDate}
-                                    required
-                                /> */}
                                 <DatePicker
                                     dateFormat="dd/MM/yyyy"
                                     selected={updateStartDate}
@@ -155,6 +140,7 @@ const EmployeeForm = () => {
                                         onChange={(e) => setUpdateState(e.value)}
                                         value={defaultOption}
                                         placeholder="Select an option"
+                                        required
                                     />
                                 </div>
                                 <div className="input address">
@@ -176,6 +162,7 @@ const EmployeeForm = () => {
                                 onChange={(e) => setUpdateDepartment(e.value)}
                                 value={defaultDepOption}
                                 placeholder="Select an option"
+                                required
                             />
                         </div>
                         <button className="save" type="submit">
