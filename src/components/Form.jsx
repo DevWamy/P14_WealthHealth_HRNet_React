@@ -1,9 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-// import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { employeeActions } from '../store/employeeSlice';
-// import logo from '../assets/WealthHealth.png';
 import '../style/components/form.css';
 
 //For Date picker
@@ -18,7 +16,9 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
 //For modal
-import Modal from './Modal';
+// import Modal from './Modal';
+import { Modal } from 'modal-react-for-projects';
+import 'modal-react-for-projects/dist/modal.css';
 
 //For state
 import { stateOptions } from './states';
@@ -44,10 +44,10 @@ const EmployeeForm = () => {
     const [updateCity, setUpdateCity] = useState('');
     const [updateZipCode, setUpdateZipCode] = useState('');
 
-    //For date picker
+    // For date picker
     const [updateDateOfBirth, setUpdateDateOfBirth] = useState('');
     const [updateStartDate, setUpdateStartDate] = useState('');
-    const years = range(1960, getYear(new Date()) + 10, 1);
+    const years = range(1960, getYear(new Date()) + 1, 1);
     const months = [
         'January',
         'February',
