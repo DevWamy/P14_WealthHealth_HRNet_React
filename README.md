@@ -57,4 +57,8 @@ It will allow you to run the application on http://localhost:3000
 - ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/DevWamy/P14_WealthHealth_HRNet_React/redux?color=blueviolet)
 - ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/DevWamy/P14_WealthHealth_HRNet_React/react-redux?color=ff64b2)
 - ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/DevWamy/P14_WealthHealth_HRNet_React/react-scripts?color=blueviolet)
-
+- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/DevWamy/P14_WealthHealth_HRNet_React/react-dropdown?color=ff64b2)
+- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/DevWamy/P14_WealthHealth_HRNet_React/react-datepicker?color=blueviolet)
+- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/DevWamy/P14_WealthHealth_HRNet_React/date-fns?color=ff64b2)
+- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/DevWamy/P14_WealthHealth_HRNet_React/lodash.range?color=blueviolet)
+- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/DevWamy/P14_WealthHealth_HRNet_React/material-react-table?color=ff64b2)
