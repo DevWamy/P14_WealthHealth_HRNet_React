@@ -1,4 +1,4 @@
-![logo](src/assets/WealthHealth.png)
+![img](src/assets/WealthHealth.png)
 
 
 
